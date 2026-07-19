@@ -43,7 +43,7 @@
             // what folder to run this launch configuration in
             "cwd": "${workspaceFolder}",
             // path to the executable you want to run
-            "executable": "./bin/eink_demo2.elf",
+            "executable": "./bin/eink_dev_kit.elf",
             // "request" can be "launch" or "attach". Use "launch" to tell vscodium how to start
             // the app in debug mode before attaching to it.
             "request": "launch",
@@ -63,7 +63,7 @@
             // give the path where arm-none-eabi-objdump and arm-none-eabi-nm are located
             "armToolchainPath": "/usr/bin/",
             // an svd file is optional, but by providing it you can use the xperipherals window to read peripheral register values
-            "svdFile": "STM32WL5x_CM4.svd",
+            "svdFile": "STM32F103.svd",
             // specify any tasks you want to run before this configuration is launched. In this case the "debug" task
             // rebuilds the project and starts the GDB server in the background.
             // tasks are defined in the tasks.json file

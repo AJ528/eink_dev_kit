@@ -37,7 +37,6 @@ DEFINES = 		\
 	STM32F10X_HD \
 	STM32F103xE \
 	CORE_CM3
-# it might supposed to be STM32F10X_HD
 
 # if you are going to use the low level drivers, define this value to expose init structures
 DEFINES += USE_FULL_LL_DRIVER
