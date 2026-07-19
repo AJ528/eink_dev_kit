@@ -24,6 +24,8 @@ void UART_init(void)
   LL_USART_Init(USART1, &USART_InitStruct);
   LL_USART_Enable(USART1);
 
+  
+
   // // wait for the LPUART module to send an idle frame and finish initialization
   // while(!(LL_LPUART_IsActiveFlag_TEACK(LPUART1)) || !(LL_LPUART_IsActiveFlag_REACK(LPUART1)));
 }

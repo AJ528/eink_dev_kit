@@ -1,4 +1,5 @@
 
+#include "mprintf.h"
 #include "sysclk.h"
 #include "gpio.h"
 #include "uart.h"
@@ -24,11 +25,14 @@ int main(void)
 {
   SCB->VTOR = (uint32_t)(&_vector_table_offset);  // set the vector table offset
   enable_cycle_count();
+
+  // initialize GPIO pins as UART
+  GPIO_init();
   /* Configure the system clock to run off HSE32 */
   sysclk_init();
 
   /* Initialize all configured peripherals */
-  GPIO_init();
+
   UART_init();
 
 
