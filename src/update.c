@@ -10,7 +10,7 @@ struct boot_vectable_ {
     void (*Reset_Handler)(void);
 };
 
-#define BOOTVTAB	((struct boot_vectable_ *)0x1fff0000)
+#define BOOTVTAB	((struct boot_vectable_ *)0x1ffff000)
 
 int32_t update_cmd(uint32_t argc, char* argv[])
 {
