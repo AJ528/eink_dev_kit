@@ -26,14 +26,14 @@ int main(void)
   SCB->VTOR = (uint32_t)(&_vector_table_offset);  // set the vector table offset
   enable_cycle_count();
 
-  // initialize GPIO pins as UART
+  // initialize GPIO pins
   GPIO_init();
-  /* Configure the system clock to run off HSE32 */
+  /* Configure the system clock to run off HSE */
   sysclk_init();
-
-  /* Initialize all configured peripherals */
-
+  // initialize UART
   UART_init();
+
+  
 
 
 // infinite loop
