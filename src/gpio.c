@@ -77,7 +77,12 @@ void EPD_reset(void)
 
 bool EPD_is_busy(void)
 {
-  return LL_GPIO_IsOutputPinSet(EPD_BUSY_PORT, EPD_BUSY_PIN);
+  // 1 = not busy
+  if(LL_GPIO_IsOutputPinSet(EPD_BUSY_PORT, EPD_BUSY_PIN)){
+    return false;
+  }else{  // 0 = busy
+    return true;
+  }
 }
 
 void EPD_WriteCMD(uint8_t command)
@@ -116,6 +121,11 @@ static void SPI_Write(uint8_t value)
     else
       LL_GPIO_ResetOutputPin(SPI_MOSI_PORT, SPI_MOSI_PIN);
 
+    __NOP();
+    __NOP();
+    __NOP();
+    __NOP();
+
     LL_GPIO_SetOutputPin(SPI_CLK_PORT, SPI_CLK_PIN);
     // max SPI speed is 10MHz and sysclk is 36MHz
     // so add some NOPs to slow below 10MHz
@@ -130,6 +140,6 @@ static void SPI_Write(uint8_t value)
     __NOP();
     __NOP();
 
-    value<<=1;
+    value=value<<1;
   }
 }

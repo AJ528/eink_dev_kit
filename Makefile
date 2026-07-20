@@ -29,7 +29,7 @@ INC_DIRS = \
 	drivers/inc \
 	drivers/stm32f1_drivers/CMSIS_inc \
 	drivers/stm32f1_drivers/device_inc \
-	drivers/stm32f1_drivers/stm32f1xx_ll_inc \
+	drivers/stm32f1_drivers/stm32f1xx_ll_inc 
 
 # predefined macros
 DEFINES = 		\

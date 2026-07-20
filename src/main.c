@@ -4,9 +4,9 @@
 #include "gpio.h"
 #include "uart.h"
 #include "mcli.h"
-// #include "timer.h"
+#include "display_epd.h"
 
-// #include "mprintf.h"
+
 
 #include "stm32f1xx_ll_utils.h"
 #include "stm32f1xx_ll_usart.h"
@@ -33,7 +33,10 @@ int main(void)
   // initialize UART
   UART_init();
 
-  
+  EPD_init();
+  EPD_whitescreen_white();
+  EPD_deepsleep();
+
 
 
 // infinite loop
