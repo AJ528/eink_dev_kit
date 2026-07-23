@@ -13,7 +13,7 @@ void sysclk_init(void)
 {
   const uint32_t desired_sys_clk = 36000000;
 
-  //set up to run off the 8MHz high speed external clock
+  //set up to run off the 36MHz PLL
   LL_SetFlashLatency(desired_sys_clk);
 
   LL_RCC_HSE_Enable();

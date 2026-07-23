@@ -101,8 +101,8 @@ void EPD_WriteData(uint8_t data)
 {
   // activate chip select (CS = 0)
   LL_GPIO_ResetOutputPin(SPI_CS_PORT, SPI_CS_PIN);
-  // set to command mode (DC = 0)
-  LL_GPIO_ResetOutputPin(SPI_DC_PORT, SPI_DC_PIN);
+  // set to data mode (DC = 1)
+  LL_GPIO_SetOutputPin(SPI_DC_PORT, SPI_DC_PIN);
   // write data
   SPI_Write(data);
   // deactivate chip select (CS = 1)
@@ -116,29 +116,27 @@ static void SPI_Write(uint8_t value)
   LL_GPIO_ResetOutputPin(SPI_CLK_PORT, SPI_CLK_PIN);  
 
   for(i=8; i>0; i--){
-    if(value&0x80)
+    if(value&0x80){
       LL_GPIO_SetOutputPin(SPI_MOSI_PORT, SPI_MOSI_PIN);
-    else
+    }else{
       LL_GPIO_ResetOutputPin(SPI_MOSI_PORT, SPI_MOSI_PIN);
+    }
 
-    __NOP();
-    __NOP();
-    __NOP();
-    __NOP();
+    // __NOP();
+    // __NOP();
+    // __NOP();
 
     LL_GPIO_SetOutputPin(SPI_CLK_PORT, SPI_CLK_PIN);
     // max SPI speed is 10MHz and sysclk is 36MHz
     // so add some NOPs to slow below 10MHz
-    __NOP();
-    __NOP();
-    __NOP();
-    __NOP();
+    // __NOP();
+    // __NOP();
+    // __NOP();
 
     LL_GPIO_ResetOutputPin(SPI_CLK_PORT, SPI_CLK_PIN);
-    __NOP();
-    __NOP();
-    __NOP();
-    __NOP();
+    // __NOP();
+    // __NOP();
+    // __NOP();
 
     value=value<<1;
   }

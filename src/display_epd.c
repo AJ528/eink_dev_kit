@@ -82,3 +82,17 @@ void EPD_whitescreen_white(void)
   }
   EPD_update();
 }
+
+void EPD_whitescreen_all(const uint8_t *data)
+{
+  uint32_t i;	
+  EPD_WriteCMD(0x10);  //write old data 
+  for(i=0;i<EPD_ARRAY;i++){               
+    EPD_WriteData(0x00);
+  }
+  EPD_WriteCMD(0x13);  //write new data 
+  for(i=0;i<EPD_ARRAY;i++){               
+    EPD_WriteData(data[i]);
+  }	 
+  EPD_update();	 
+}
