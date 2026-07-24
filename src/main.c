@@ -6,7 +6,12 @@
 #include "mcli.h"
 #include "display_epd.h"
 
-#include "demo_image.h"
+#include "demo_image1.h"
+#include "demo_image2.h"
+#include "demo_image3.h"
+#include "demo_image4.h"
+#include "demo_image5.h"
+#include "demo_image6.h"
 
 #include "stm32f1xx_ll_utils.h"
 #include "stm32f1xx_ll_usart.h"
@@ -38,11 +43,31 @@ int main(void)
   EPD_deepsleep();
   LL_mDelay(4000);
 
-  // EPD_init();
-  // EPD_whitescreen_all(gImage_1);
-  // EPD_deepsleep();
-  // LL_mDelay(4000);
+  EPD_init();
+  EPD_whitescreen_all(gImage_3);
+  EPD_deepsleep();
+  LL_mDelay(4000);
 
+  EPD_init_fast();
+  EPD_whitescreen_all(gImage_4);
+  EPD_deepsleep();
+  LL_mDelay(4000);
+
+
+
+  EPD_init();
+  EPD_whitescreen_all(gImage_5);
+  EPD_deepsleep();
+  LL_mDelay(4000);
+
+  EPD_init();
+  EPD_whitescreen_all(gImage_6);
+  EPD_deepsleep();
+  LL_mDelay(4000);
+
+  // EPD_init();
+  // EPD_whitescreen_white();
+  // EPD_deepsleep();
 
 
 // infinite loop

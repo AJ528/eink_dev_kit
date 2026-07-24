@@ -4,6 +4,7 @@
 #include <stdint.h>
 
 void EPD_init(void);
+void EPD_init_fast(void);
 void EPD_update(void);
 void EPD_deepsleep(void);
 

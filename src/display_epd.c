@@ -50,6 +50,36 @@ void EPD_init(void)
   EPD_WriteData(0x22);
 }
 
+//Fast update 1 initialization
+void EPD_init_fast(void)
+{
+  EPD_reset();
+  
+  EPD_WriteCMD(0X00);     //PANNEL SETTING
+  EPD_WriteData(0x1F);   //KW-3f   KWR-2F	BWROTP 0f	BWOTP 1f
+
+  EPD_WriteCMD(0X50);     //VCOM AND DATA INTERVAL SETTING
+  EPD_WriteData(0x10);
+  EPD_WriteData(0x07);
+
+  EPD_WriteCMD(0x04);     //POWER ON
+  LL_mDelay(100);
+  // delay until EPD is not busy
+  while(EPD_is_busy());        //waiting for the electronic paper IC to release the idle signal
+
+  //Enhanced display drive(Add 0x06 command)
+  EPD_WriteCMD(0x06);     //Booster Soft Start 
+  EPD_WriteData (0x27);
+  EPD_WriteData (0x27);
+  EPD_WriteData (0x18);
+  EPD_WriteData (0x17);
+
+  EPD_WriteCMD(0xE0);
+  EPD_WriteData(0x02);
+  EPD_WriteCMD(0xE5);
+  EPD_WriteData(0x5A);
+}
+
 void EPD_update(void)
 {
   EPD_WriteCMD(0x12);
